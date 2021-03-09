@@ -10,5 +10,6 @@ const assertArraysEqual = function(actual, expected) {
    i++
     }
   } else result = "NOT"
-  return console.log(`The arrays are ${result} equal`);
+  return console.log(`Asserting the arrays is ${result} confirmed.`);
 };
+module.exports = assertArraysEqual;
