@@ -1,28 +1,28 @@
 const findKeyByValue = function(myObject, value) {
-  result = "undefined";
-  i = 0;
-  while (i < Object.keys(myObject).length) {
-    if (Object.keys(myObject)[i] === value) {
-      results = Object.keys(myObject)[i]
-      break;
-    };
-  i++;
-  };
-}
-
-
-const assertEqual = function(actual, expected) {
-  if (actual === expected ) {
-    return console.log(`Assertion Passed: ${actual} === ${expected}`);
-  } 
-  else return console.log(`Assertion Failed: ${actual} == ${expected}`);
+  const flatten = require('./flatten');
+  let myArr = flatten(Object.entries(myObject));
+  let result = undefined;
+  if (myArr.includes(value)) {
+    result = myArr[myArr.indexOf(value) - 1];
+  }
+  return result;
 };
 
-const bestTVShowsByGenre = { 
+
+// const assertEqual = function(actual, expected) {
+//   if (actual === expected ) {
+//     return console.log(`Assertion Passed: ${actual} === ${expected}`);
+//   }
+//   else return console.log(`Assertion Failed: ${actual} == ${expected}`);
+// };
+
+const bestTVShowsByGenre = {
   sci_fi: "The Expanse",
   comedy: "Brooklyn Nine-Nine",
   drama:  "The Wire"
 };
+
+const assertEqual = require('./assertEqual');
 
 assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
 assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);

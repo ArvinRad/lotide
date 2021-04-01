@@ -9,5 +9,5 @@ const flatten = function (arr) {
   }, []);
   return output;
 };
-modeule.exports
+module.exports = flatten;
 //console.log(flatten([1, 2, [3, 4], 5, [6]]));
