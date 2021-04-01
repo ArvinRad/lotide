@@ -1,22 +1,23 @@
 const countOnly = function(allItems, itemToCount) {
-  result = {};
-  //item0 = object.key(itemToCount);
+  let result = {};
   for (item of allItems) {
-    if (itemToCount[item] == true) {
-      if (Number.isInteger(result[item])) {
+    if (itemToCount[item] === true) {
+      if (result[item]) {
         result[item]++
-      } else result[item] = 1;
-    };
-  };
-if (Object.keys(result) === []) result = "undefined";
-return result;
-}
+      } else {
+        result[item] = 1;
+      }
+    }
+  }
+  return result;
+};
 
 const assertEqual = function(actual, expected) {
-  if (actual === expected ) {
+  if (actual === expected) {
     return console.log(`Assertion Passed: ${actual} === ${expected}`);
-  } 
-  else return console.log(`Assertion Failed: ${actual} == ${expected}`);
+  } else {
+    return console.log(`Assertion Failed: ${actual} == ${expected}`);
+  }
 };
 
 const firstNames = [
