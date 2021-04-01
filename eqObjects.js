@@ -1,41 +1,49 @@
 const eqObjects = function(actual, expected) {
   let result = "";
-  actualK = Object.keys(actual);
-  expectedK = Object.keys(expected);
+  actualKeys = Object.keys(actual);
+  expectedKeys = Object.keys(expected);
+
 // Testing if two arrays are equal
-   const eqArrays = function(actual, expected) {
-    let i = 0;
-    let res = true;
-    if (actual.length == expected.length) {
-     while (i < actual.length) {
-       if (actual[i] !== expected[i] ) {
-          res = false;
-          break;
-       } 
+
+  const eqArrays = function(actual, expected) {
+  let i = 0;
+  let res = true;
+  if (actual.length === expected.length) {
+    while (i < actual.length) {
+      if (actual[i] !== expected[i] ) {
+        res = false;
+        break;
+      }
       i++
-      } 
-    } else res = false;
+    }
+  } else {
+    res = false;
+  }
   return res
   };
+
 // Testing for the objects
- if (actualK.length == expectedK.length) {
-   let i = 0;
-   while (i < actualK.length) {
-     if (expectedK.includes(actualK[i])) {
-        if ((typeof expected[actualK[i]] === "object") || (typeof actual[actualK[i]] === "object")) {
-          if (!(eqArrays(expected[actualK[i]], actual[actualK[i]]))) {
+
+  if (actualKeys.length == expectedKeys.length) {
+    let i = 0;
+    while (i < actualKeys.length) {
+      if (expectedKeys.includes(actualKeys[i])) {
+        if ((typeof expected[actualKeys[i]] === "object") || (typeof actual[actualKeys[i]] === "object")) {
+          if (!(eqArrays(expected[actualKeys[i]], actual[actualKeys[i]]))) {
             result = "NOT";
             break;
           }
-        }else if (expected[actualK[i]] !== actual[actualK[i]]) {
+        }else if (expected[actualKeys[i]] !== actual[actualKeys[i]]) {
           result = "NOT";
           break;
-          };
-      }; 
-  i++
-   }
- } else result = "NOT"
- return console.log(`The objects are ${result} equal`);
+        };
+      };
+    i++
+    }
+  } else {
+    result = "NOT";
+  }
+  return console.log(`The objects are ${result} equal`);
 };
 
 const ab = { a: "1", b: "2" };
@@ -51,14 +59,3 @@ eqObjects(cd, dc); // => true
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
 eqObjects(cd, cd2); // => false
-
-
-
-
-
-const assertEqual = function(actual, expected) {
-  if (actual === expected ) {
-    return console.log(`Assertion Passed: ${actual} === ${expected}`);
-  } 
-  else return console.log(`Assertion Failed: ${actual} == ${expected}`);
-};
