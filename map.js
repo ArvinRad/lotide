@@ -7,25 +7,11 @@ const map = function (array, callback) {
 
 }
 
+const assertArraysEqual = require('./assertArraysEqual');
 
-
-const assertArraysEqual = function(actual, expected) {
-  let result = "";
- if (actual.length == expected.length) {
-   let i = 0;
-   while (i < actual.length) {
-     if (actual[i] !== expected[i] ) {
-      result = "NOT";
-      break;
-     } 
-  i++
-   }
- } else result = "NOT"
- return console.log(`The arrays are ${result} equal`);
-};
 
 const words = ["ground", "control", "major", "tom"];
 const results1 = map(words, word => word[0]);
-console.log(results1);
 
 assertArraysEqual(results1, ["g", "c", "m", "t"]);
+assertArraysEqual(map(words, word => word.replace('o', '@@')), ["gr@@und", "c@@ntrol", "maj@@r", "t@@m"]);
