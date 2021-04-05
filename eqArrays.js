@@ -3,12 +3,12 @@ const eqArrays = function(actual, expected) {
   if (actual && expected) {
     while (i < actual.length) {
     if (actual[i] !== expected[i]) {
-      return "failed. 🛑🛑🛑";
+      return "Assertion failed. 🛑🛑🛑";
       break;
     }
     i++
     }
   }
-  return "passed. ✅✅✅";
+  return "Assertion passed. ✅✅✅";
 };
 module.exports = eqArrays;
