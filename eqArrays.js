@@ -1,11 +1,13 @@
 const eqArrays = function(actual, expected) {
   let i = 0;
-  while (i < actual.length) {
+  if (actual && expected) {
+    while (i < actual.length) {
     if (actual[i] !== expected[i]) {
       return "failed. 🛑🛑🛑";
-     break;
+      break;
     }
-  i++
+    i++
+    }
   }
   return "passed. ✅✅✅";
 };

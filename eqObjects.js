@@ -1,26 +1,9 @@
+
+const eqArrays = require('./eqArrays');
 const eqObjects = function(actual, expected) {
   let result = "";
   actualKeys = Object.keys(actual);
   expectedKeys = Object.keys(expected);
-
-// Testing if two arrays are equal
-
-  const eqArrays = function(actual, expected) {
-  let i = 0;
-  let res = true;
-  if (actual.length === expected.length) {
-    while (i < actual.length) {
-      if (actual[i] !== expected[i] ) {
-        res = false;
-        break;
-      }
-      i++
-    }
-  } else {
-    res = false;
-  }
-  return res
-  };
 
 // Testing for the objects
 
@@ -29,10 +12,8 @@ const eqObjects = function(actual, expected) {
     while (i < actualKeys.length) {
       if (expectedKeys.includes(actualKeys[i])) {
         if ((typeof expected[actualKeys[i]] === "object") || (typeof actual[actualKeys[i]] === "object")) {
-          if (!(eqArrays(expected[actualKeys[i]], actual[actualKeys[i]]))) {
-            result = "NOT";
-            break;
-          }
+            result = eqArrays(expected[actualKeys[i]], actual[actualKeys[i]]);
+            if (result.includes("Failed")) break;
         }else if (expected[actualKeys[i]] !== actual[actualKeys[i]]) {
           result = "NOT";
           break;
