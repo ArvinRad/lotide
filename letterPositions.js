@@ -10,11 +10,4 @@ const letterPositions = function(myString) {
   delete result[' '];
   return result;
 };
-
-const result1 = letterPositions("lighthouse in the house");
-
-const assertArraysEqual = require('./assertArraysEqual');
-
-assertArraysEqual(result1.h, [3, 5, 15, 18]);
-assertArraysEqual(result1.e, [9, 16, 22]);
-assertArraysEqual(result1.k, undefined);
+module.exports = letterPositions;

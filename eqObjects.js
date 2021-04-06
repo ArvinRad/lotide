@@ -1,42 +1,25 @@
 
 const eqArrays = require('./eqArrays');
+
 const eqObjects = function(actual, expected) {
-  let result = "";
-  actualKeys = Object.keys(actual);
-  expectedKeys = Object.keys(expected);
-
-// Testing for the objects
-
-  if (actualKeys.length == expectedKeys.length) {
-    let i = 0;
-    while (i < actualKeys.length) {
-      if (expectedKeys.includes(actualKeys[i])) {
-        if ((typeof expected[actualKeys[i]] === "object") || (typeof actual[actualKeys[i]] === "object")) {
-            result = eqArrays(expected[actualKeys[i]], actual[actualKeys[i]]);
-            if (result.includes("Failed")) break;
-        }else if (expected[actualKeys[i]] !== actual[actualKeys[i]]) {
-          result = "NOT";
+  let objectsEqual = true;
+  if (typeof actual === "object" && typeof expected === "object" && Object.keys(actual).length === Object.keys(expected).length) {
+    for (let key in actual) {
+      if (Array.isArray(actual[key]) && (Array.isArray(expected[key]))) {
+        objectsEqual = eqArrays(actual[key], expected[key]);
+        if (!objectsEqual) {
           break;
-        };
-      };
-    i++
+        }
+      } else if(actual[key] !== expected[key]) {
+        objectsEqual = false;
+        break;
+      }
     }
   } else {
-    result = "NOT";
+   objectsEqual = false;
   }
-  return console.log(`The objects are ${result} equal`);
-};
+ console.log(actual, expected, objectsEqual);
+ return objectsEqual;
+}
 
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-eqObjects(ab, ba); // => true
-
-const abc = { a: "1", b: "2", c: "3" };
-eqObjects(ab, abc); // => false
-
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-eqObjects(cd, dc); // => true
-
-const cd2 = { c: "1", d: ["2", 3, 4] };
-eqObjects(cd, cd2); // => false
+module.exports = eqObjects;

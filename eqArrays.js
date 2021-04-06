@@ -1,13 +1,17 @@
 const eqArrays = function(actual, expected) {
+  let result = true;
   let i = 0;
   if (actual && expected && actual.length === expected.length) {
     while (i < actual.length) {
     if (actual[i] !== expected[i]) {
-      return " failed. 🛑🛑🛑";
+      result = false;
+      break;
     }
     i++
     }
-  } else return " failed. 🛑🛑🛑";
-  return " passed. ✅✅✅";
+  } else {
+    result = false;
+  };
+  return result;
 };
 module.exports = eqArrays;

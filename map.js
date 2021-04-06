@@ -7,11 +7,4 @@ const map = function (array, callback) {
 
 }
 
-const assertArraysEqual = require('./assertArraysEqual');
-
-
-const words = ["ground", "control", "major", "tom"];
-const results1 = map(words, word => word[0]);
-
-assertArraysEqual(results1, ["g", "c", "m", "t"]);
-assertArraysEqual(map(words, word => word.replace('o', '@@')), ["gr@@und", "c@@ntrol", "maj@@r", "t@@m"]);
+module.exports = map;

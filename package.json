@@ -1,0 +1,26 @@
+{
+  "name": "Arvin Radan/lotide",
+  "version": "1.0.0",
+  "description": "My Modules modified",
+  "main": "assertArraysEqual.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArvinRad/lotide.git"
+  },
+  "author": "Arvin Radan",
+  "license": "AFL-3.0",
+  "bugs": {
+    "url": "https://github.com/ArvinRad/lotide/issues"
+  },
+  "homepage": "https://github.com/ArvinRad/lotide#readme",
+  "devDependencies": {
+    "chai": "^4.3.3",
+    "mocha": "^8.3.1"
+  }
+}
